@@ -6,19 +6,16 @@ function Search() {
 
 Search.prototype.getDetails = function (username, showDetails) {
   $.get('https://api.github.com/users/'+username+'?access_token='+apiKey).then(function(response) {
-    console.log(response);
-    showDetails(response.name);
-    console.log(response.name);
+    showDetails(response.name, response.login, response.html_url, response.location, response.public_repos, response.repos_url, response.followers);
   }).fail(function(error) {
     console.log(error.responseJSON.message);
   });
 };
 
-Search.prototype.getRepos = function (username) {
+Search.prototype.getRepos = function (username, showRepos) {
   $.get('https://api.github.com/users/'+username+'/repos?access_token=' +apiKey).then(function(response){
-    console.log(response);
     for (var repo of response) {
-      console.log(repo.name);
+      showRepos(repo.name, repo.html_url, repo.description, repo.language);
     }
   }).fail(function(error){
     console.log(error.responseJSON.message);
