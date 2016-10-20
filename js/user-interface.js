@@ -1,7 +1,7 @@
 var Search = require('./../js/user.js').searchModule;
 
 var showDetails = function(name, login, html_url, location, public_repos, repos_url, followers) {
-  $('#userDetails').append(
+  $('#userDetails').html(
     '<h3>'+name+'</h3>' +
     '<h3>'+login+'</h3>' +
     '<h4>Located in: '+location+'</h4>' +
@@ -11,7 +11,7 @@ var showDetails = function(name, login, html_url, location, public_repos, repos_
 };
 
 var showRepos = function(name, html_url, description, language) {
-  $('#userDetails').append(
+  $('#userRepos').append(
     'div class="userRepo">'+
       '<a href="'+html_url+'"><h3>'+name+'</h3></a>'+
       '<h3>Description: '+description+'</h3>'+
@@ -20,12 +20,25 @@ var showRepos = function(name, html_url, description, language) {
   );
 };
 
+var userError = function() {
+  $('#userDetails').html(
+    '<h3>UserName Not Found</h3>'
+  );
+};
+
+var repoError = function() {
+  $('#userRepos').html(
+    '<h3> No Repositories Found for This User</h3>'
+  );
+};
+
 $(document).ready(function() {
   var newSearch = new Search();
   $('#searchButton').click(function(event) {
     event.preventDefault();
     var username = $('#username').val();
-    newSearch.getDetails(username, showDetails);
-    newSearch.getRepos(username, showRepos);
+    $('#userRepos').children().remove();
+    newSearch.getDetails(username, showDetails, userError);
+    newSearch.getRepos(username, showRepos, repoError);
   });
 });
