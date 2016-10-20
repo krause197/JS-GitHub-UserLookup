@@ -1,21 +1,21 @@
 var Search = require('./../js/user.js').searchModule;
 
-var showDetails = function(name, login, html_url, location, public_repos, repos_url, followers) {
+var showDetails = function(name, login, html_url, location, public_repos, followers) {
   $('#userDetails').html(
     '<h3>'+name+'</h3>' +
     '<h3>'+login+'</h3>' +
-    '<h4>Located in: '+location+'</h4>' +
-    '<a href="'+repos_url+'"><h4>Total repos: '+public_repos+'</h4></a>' +
-    '<h4>Followers: '+followers+'</h4>'
+    '<h4>'+location+'</h4>' +
+    '<h4>'+public_repos+' Repositories</h4>' +
+    '<h4>'+followers+' Followers</h4>'
   );
 };
 
 var showRepos = function(name, html_url, description, language) {
   $('#userRepos').append(
-    'div class="userRepo">'+
+    'div class="userRepo col-sm-4">'+
       '<a href="'+html_url+'"><h3>'+name+'</h3></a>'+
-      '<h3>Description: '+description+'</h3>'+
-      '<h4>Language: '+language+'</h4>'+
+      '<h3>Description:</h3><p>'+description+'</p>'+
+      '<h4>Language:</h4></p>'+language+'</p>'+
     '</div>'
   );
 };

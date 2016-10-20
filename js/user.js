@@ -6,9 +6,8 @@ function Search() {
 
 Search.prototype.getDetails = function (username, showDetails, userError) {
   $.get('https://api.github.com/users/'+username+'?access_token='+apiKey).then(function(response) {
-    showDetails(response.name, response.login, response.html_url, response.location, response.public_repos, response.repos_url, response.followers);
+    showDetails(response.name, response.login, response.html_url, response.location, response.public_repos, response.followers);
   }).fail(function(error) {
-    console.log(error.responseJSON.message);
     userError();
   });
 };
@@ -27,7 +26,6 @@ Search.prototype.getRepos = function (username, showRepos, repoError) {
       showRepos(repo.name, repo.html_url, description, language);
     }
   }).fail(function(error){
-    console.log(error.responseJSON.message);
     repoError();
   });
 };
