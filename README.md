@@ -14,7 +14,7 @@ Eric Krause
 * Then change to the directory: $ cd js-project1
 * Run: $ npm init
 * Run: $ bower init
-* Run: $ npm install -1
+* Run: $ npm install
 * Run: $ bower install
 * Input GitHub API Key in the .env file (see next section)
 * Run: $ gulp serve
