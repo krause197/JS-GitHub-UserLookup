@@ -4,9 +4,10 @@ function Search() {
 
 }
 
-Search.prototype.getDetails = function (username) {
+Search.prototype.getDetails = function (username, showDetails) {
   $.get('https://api.github.com/users/'+username+'?access_token='+apiKey).then(function(response) {
     console.log(response);
+    showDetails(response.name);
     console.log(response.name);
   }).fail(function(error) {
     console.log(error.responseJSON.message);
