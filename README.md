@@ -11,11 +11,10 @@ Eric Krause
 ## Setup/Installation Requirements
  Clone the repository at: [https://github.com/krause197/JS-GitHub-UserLookup](https://github.com/krause197/JS-GitHub-UserLookup).
 * In the console enter: $ git clone https://github.com/krause197/JS-GitHub-UserLookup
-* Then change to the directory: $ cd js-project1
+* Then change to the directory: $ cd JS-GitHub-UserLookup
 * Run: $ npm init
 * Run: $ bower init
 * Run: $ npm install
-* Run: $ bower install
 * Input GitHub API Key in the .env file (see next section)
 * Run: $ gulp serve
 
